@@ -1,15 +1,17 @@
 import styles from "./components/Site.module.css";
-import {PageOne} from "./components/pages/PageOne.tsx";
-import {PageThree} from "./components/pages/PageThree.tsx";
-import {PageTwo} from "./components/pages/PageTwo.tsx";
+import {Adidas} from "./components/pages/Adidas.tsx";
+import {Abibas} from "./components/pages/Abibas.tsx";
+import {Puma} from "./components/pages/Puma.tsx";
 import {Navigate, NavLink, Route, Routes} from "react-router-dom";
 import {Error404} from "./components/pages/Error404.tsx";
 import {S} from './components/pages/_styles.ts'
+import {Model} from "./components/pages/Model.tsx";
 
-const PATH = {
-    PAGE1 : '/page1',
-    PAGE2 : '/page2',
-    PAGE3 : '/page3',
+export const PATH = {
+    PAGE1: '/adidas',
+    PAGE2: '/puma',
+    PAGE3: '/abibas',
+    MODEL: '/model',
     ERROR: '/error404',
 } as const
 // ставим as const чтобы значение нельзя было перезаписать
@@ -23,28 +25,34 @@ export const App = () => {
             <div className={styles.header}><h1>HEADER</h1></div>
             <div className={styles.body}>
                 <div className={styles.nav}>
-                    <S.NavWrapper><NavLink to={PATH.PAGE1}>Page 1</NavLink></S.NavWrapper>
-                    <S.NavWrapper><NavLink to={PATH.PAGE2}>Page 2</NavLink></S.NavWrapper>
-                    <S.NavWrapper><NavLink to={PATH.PAGE3}>Page 3</NavLink></S.NavWrapper>
+                    {/*Когда использовать? Когда нужно сделать кнопку или ссылку, которая ведет на другой маршрут.*/}
+                    <S.NavWrapper><NavLink to={PATH.PAGE1}>ADIDAS</NavLink></S.NavWrapper>
+                    <S.NavWrapper><NavLink to={PATH.PAGE2}>PUMA</NavLink></S.NavWrapper>
+                    <S.NavWrapper><NavLink to={PATH.PAGE2}>ABIBAS</NavLink></S.NavWrapper>
                 </div>
                 <div className={styles.content}>
                     <Routes>
+                        {/*Когда использовать? Когда нужно связать путь (path) с компонентом (element).*/}
 
-                        {/* Главная страница и page1 ведут на PageOne */}
-                        <Route path="/" element={<PageOne/>}/>
-                        <Route path={PATH.PAGE1} element={<PageOne/>}/>
+                        {/* Главная страница и page1 ведут на Adidas */}
+                        <Route path="/" element={<Adidas/>}/>
+                        <Route path={PATH.PAGE1} element={<Adidas/>}/>
 
                         {/* Другие страницы */}
-                        <Route path={PATH.PAGE2} element={<PageTwo/>}/>
-                        <Route path={PATH.PAGE3} element={<PageThree/>}/>
+                        <Route path={PATH.PAGE2} element={<Puma/>}/>
+                        <Route path={PATH.PAGE2} element={<Abibas/>}/>
 
                         {/* Страница 404 */}
                         <Route path={PATH.ERROR} element={<Error404/>}/>
 
                         {/* Редирект для несуществующих путей */}
                         {/** - всё что угодно кроме вышеперечисленных*/}
-                        <Route path="*" element={<Navigate to="/error404" replace/>}/>
+                        {/*<Route path="*" element={<Navigate to="/error404" replace/>}/>*/}
 
+
+                        {/*для перехода на отдельную модель кроссовка*/}
+                        <Route path={`${PATH.MODEL}/:id`} element={<Model/>}/>;
+                        {/*Часть :id — это динамический параметр. React Router автоматически извлекает значение из URL и передаёт его в useParams().*/}
                     </Routes>
                 </div>
             </div>

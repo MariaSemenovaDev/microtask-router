@@ -45,3 +45,10 @@
     color: #7fb8f1;
     text-decoration: underline;
 }
+
+.pictureWrapper {
+   display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
