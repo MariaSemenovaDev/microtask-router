@@ -15,7 +15,7 @@ export type PumaItem= {
 export const pumaArr:PumaItem[] = [
     {
         id: 1,
-        model: 'ADIDAS ADIFOM TRXN',
+        model: 'Puma',
         collection: 'new collection1',
         price: '100200$',
         picture: pumaModel1,
@@ -23,7 +23,7 @@ export const pumaArr:PumaItem[] = [
     },
     {
         id: 2,
-        model: 'ADIDAS ADIFOM SUPER',
+        model: 'Puma',
         collection: 'new collection22',
         price: '200300$',
         picture: pumaModel2
@@ -37,7 +37,7 @@ export const Puma = () => {
             <div className={s.pictureWrapper}>
                 {pumaArr.map((puma) => {
                     return (
-                        <Link key={puma.id} to={`/puma/${puma.id}`}>
+                        <Link key={puma.id} to={`${PATH.PUMA}/${puma.id}`}>
                             <img width={"300px"} height={"300px"}
                                  src={puma.picture}
                                  alt={puma.model}

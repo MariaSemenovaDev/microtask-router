@@ -47,7 +47,7 @@ export const Adidas = () => {
                 {adidasArr.map((adidas) => {
                     return (
                         // <Link key={adidas.id} to={`${PATH.ADIDAS}/${adidas.id}`}>
-                        <Link key={adidas.id} to={`/adidas/${adidas.id}`}>
+                        <Link key={adidas.id} to={`${PATH.ADIDAS}/${adidas.id}`}>
                             <img width={"300px"} height={"300px"}
                                  src={adidas.picture}
                                  alt={adidas.model}
