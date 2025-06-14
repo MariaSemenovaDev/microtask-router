@@ -1,9 +1,9 @@
 import s from "./../Site.module.css";
 import adidasModel1 from '../../assets/AdiFOM_TRXN_Shoes_Black_IG7453_01_standard.webp'
 import adidasModel2 from '../../assets/Superstar_XLG_Shoes_Black_IG9777_01_standard.webp'
-import adidasModel3 from '../../assets/PostMove_Mid_Cloudfoam_Super_Lifestyle_Basketball_Mid_Classic_Shoes_Black_GY7163_01_standard.webp'
-import {S} from "./_styles.ts";
-import {Link, NavLink} from "react-router-dom";
+import adidasModel3
+    from '../../assets/PostMove_Mid_Cloudfoam_Super_Lifestyle_Basketball_Mid_Classic_Shoes_Black_GY7163_01_standard.webp'
+import {Link} from "react-router-dom";
 import {PATH} from "../../App.tsx";
 
 export type AdidasItem= {
@@ -46,7 +46,8 @@ export const Adidas = () => {
             <div className={s.pictureWrapper}>
                 {adidasArr.map((adidas) => {
                     return (
-                        <Link key={adidas.id} to={`${PATH.MODEL}/${adidas.id}`}>
+                        // <Link key={adidas.id} to={`${PATH.ADIDAS}/${adidas.id}`}>
+                        <Link key={adidas.id} to={`/adidas/${adidas.id}`}>
                             <img width={"300px"} height={"300px"}
                                  src={adidas.picture}
                                  alt={adidas.model}
